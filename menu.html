@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--<script src="http://webcyou.com/file/js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>-->
+<script type="text/javascript" src="./assets/jquery-1.2.2.pack.js"></script>
+<script type="text/javascript" src="./assets/ajaxcodedisplay-or.js"></script>
+<link rel="stylesheet" href="./assets/demo-style.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8">
+<link rel="stylesheet" href="./assets/dq.css" type="text/css">
+<link rel="stylesheet" href="./assets/menu.css" type="text/css">
+
+<title>ドラゴンクエスト風戦闘シーン</title>
+
+</head>
+<body cz-shortcut-listen="true">
+    <div class="blackboard question">
+        <p>＊めにゅーをえらんでください</p>
+    </div>
+    <div class="clearfix">
+        <div class="blackboard answer">
+            <p class="blink-before-hover"><a href="./profile.html">ぷろふぃーる</a></p>
+            <p>しつもん</p>
+            <p>
+                <ul id="questio-list"></ul>
+            </p>
+        </div>
+    </div>
+
+<script>
+$(function() {
+    // TODO: ここに質問データを突っ込む
+    let questionList = [
+        {
+            id: 1,
+            text: "Question1"
+        },
+        {
+            id: 2,
+            text: "Question2"
+        },
+    ];
+    for (var i = 0; i < questionList.length; i++) {
+        var html= '<li class="blink-before-hover"><a href="./detail.html?question_id=' + questionList[i].id + '">' + questionList[i].text +  '</a></li>';
+        $('#questio-list').append(html);
+    }
+
+    $('.blink-before-hover').hover(
+        function() {
+            // mouseover
+            $(this).addClass('blink-before');
+        },
+        function() {
+            // mouseout
+            $(this).removeClass('blink-before');
+        }
+    );
+});
+</script>
+</body>
+</html>
