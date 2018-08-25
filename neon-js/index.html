@@ -5,51 +5,8 @@
 </head>
 <body>
     
-    
-    
 <script type="text/javascript" src="./browser.js"></script>
-<script>
+<script type="text/javascript" src="./app.js"></script>
 
-//const intent = Neon.api.makeIntent({NEO:1, GAS:1}, 'AR3uEnLUdfm1tPMJmiJQurAXGL7h3EXQ2F')
-
-const config = {
-
- name: 'PrivateNet',
-  extra: {
-    neoscan: 'http://localhost:4000/api/main_net'
-  },  
-  script: Neon.default.create.script({
-    scriptHash: 'ff7d114490e81139ad51a85c8ae999f33cb71028',
-  }),
-  address: 'AK2nJJpJr6o664CWJKi1QRXjqeic2zRp8y',  // This is the address which the assets come from.
-  privateKey: 'KxDgvEKzgSBPPfuVfw67oPQBSjidEiqTHURKSDL1R7yGaGYAeYnr',
-  gas: 1
-}
-
-const privateNet = new Neon.rpc.Network(config)
-Neon.default.add.network(privateNet)
-
-Neon.api.neoscan.getBalance('PrivateNet', "AK2nJJpJr6o664CWJKi1QRXjqeic2zRp8y")
-.then(res => console.log(res))
-
-//Neon.default.doInvoke(config).then(res => {
-//  console.log(res)
-//})
-
-const props = {
-  scriptHash: 'eb41bc87e660f53e1b9e54bb7b2a68398a69241e', // Scripthash for the contract
-  operation: 'getString', 
-  args: [Neon.u.str2hexstring('normalString')],
-}
-
-const script = Neon.default.create.script(props)
-
-Neon.rpc.Query.invokeScript(script)
-  .execute('http://seed3.neo.org:20332')
-  .then(res => {
-    console.log(res) // You should get a result with state: "HALT, BREAK"
-  })
-
-</script>
 </body>
 </html>
