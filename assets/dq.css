@@ -8,11 +8,7 @@ padding-top:20px;
 background:#050505;
 color:#fff;
 }
-.dqArea{
-width:600px;
-margin:0 auto;
-}
-.dqArea.badCndtn>.status,
+.dqArea{ width:600px; margin:0 auto; } .dqArea.badCndtn>.status,
 .dqArea.badCndtn>.commend,
 .dqArea.badCndtn>.message,
 .dqArea.badCndtn>.commend>.player01Li>li>a{
@@ -162,4 +158,9 @@ line-height:22px;
 90% {opacity: 0.5;-webkit-transform: translate(2px);}
 }
 
-
+.clickable {
+    cursor: pointer;
+}
+.padding-top16px {
+    padding-top: 16px;
+}
