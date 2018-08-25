@@ -21,13 +21,11 @@
 <script type="text/javascript" src="http://webcyou.com/file/js/jquery-1.3.2.min.js"></script>
 <script>
 $(function() {
-    // TODO: ここに質問データを突っ込む
-    let questionData = {
-        id: 1,
-        text: "Question1"
-    };
-    $('title').text(questionData.text + ' | question details');
-    $('#question-text').text(questionData.text);
+    let questionId = params["question_id"];
+    // TODO: 質問IDを使って質問テキストを取得
+    let questionText = "Question1";
+    $('title').text(questionText + ' | question details');
+    $('#question-text').text(questionText);
 
     // TODO: ここに回答データを突っ込む
     let answerList = [
@@ -68,7 +66,7 @@ $(function() {
 
     var createAnswerHtml = '<p class="padding-top16px blink-before-hover">'
         + '<a href="battle.html?question_id='
-        + questionData.id
+        + questionId
         + '">'
         + 'fight this question!'
         + '</a></p>';
