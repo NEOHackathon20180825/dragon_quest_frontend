@@ -26,7 +26,7 @@ $(function() {
         id: 1,
         text: "Question1"
     };
-    $('title').text(questionData.text + ' | しつもんしょうさい');
+    $('title').text(questionData.text + ' | question details');
     $('#question-text').text(questionData.text);
 
     // TODO: ここに回答データを突っ込む
@@ -70,7 +70,7 @@ $(function() {
         + '<a href="battle.html?question_id='
         + questionData.id
         + '">'
-        + 'このしつもんとたたかう'
+        + 'fight this question!'
         + '</a></p>';
     $('#answer-list').append(createAnswerHtml);
 

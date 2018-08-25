@@ -79,7 +79,7 @@ height:300px;
 }
 .monsterLi{
 position:absolute;
-bottom:30px;
+bottom:64px;
 display:inline;
 width:100%;
 }
@@ -134,11 +134,12 @@ margin:-24px auto 0;
 font-size:14px;
 font-weight:bold;
 background:#000;
+text-align:center;
 }
 .message{
 margin-left:140px;
 padding:20px;
-height:122px;
+height:86px;
 line-height:22px;
 }
 .message:after{content:"";display:block;clear:both;visibility:hidden;}
@@ -157,6 +158,48 @@ line-height:22px;
 80% {opacity: 1;}
 90% {opacity: 0.5;-webkit-transform: translate(2px);}
 }
+
+/* 吹き出し */
+.balloon2 {
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 0;
+  padding: 16px;
+  color: #fff;
+  font-size: 16px;
+  background: black;
+  border: solid 3px #fff;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.balloon2:before{
+  content: "";
+  position: absolute;
+  bottom: -24px;
+  left: 75%;
+  margin-left: -15px;
+  border: 12px solid transparent;
+  border-top: 12px solid #FFF;
+  z-index: 2;
+}
+
+.balloon2:after{
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 75%;
+  margin-left: -17px;
+  border: 14px solid transparent;
+  border-top: 14px solid #fff;
+  z-index: 1;
+}
+
+.balloon2 p {
+	margin: 0;
+	padding: 0;
+}
+/***************/
 
 .clickable {
     cursor: pointer;
