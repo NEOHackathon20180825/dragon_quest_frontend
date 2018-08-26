@@ -1,4 +1,4 @@
-const contract = 'b85ede7ba39e2459bb343dab81be8b6aab1c9c9d';
+const contract = 'e0cad06f15a4684595574c5cb95a2ed3dd2c0c63';
 
 function get(method) {
 /*
@@ -39,11 +39,10 @@ const props = {
 const script = Neon.default.create.script(props)
 
 Neon.rpc.Query.invokeScript(script)
-    .execute('http://seed3.neo.org:20332')
+    .execute('http://localhost:30333')
     .then(res => {
         console.log(res)    
     })
-
 }
 
 function sendNeo(){
@@ -63,11 +62,11 @@ function sendNeo(){
 
 
 
-function setString(method, param) {
+function set(method) {
     const props = {
         scriptHash: contract, 
         operation: method,
-        args: [Neon.u.str2hexstring(param)],
+        args: [],
     }
 
     const script = Neon.default.create.script(props)
