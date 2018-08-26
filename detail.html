@@ -1,15 +1,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="./assets/demo-style.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8">
-<link rel="stylesheet" href="./assets/dq.css" type="text/css">
-<link rel="stylesheet" href="./assets/menu.css" type="text/css">
-<link rel="stylesheet" href="./assets/detail.css" type="text/css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
-<title></title>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="./assets/demo-style.css" type="text/css" media="screen" title="prettyPhoto main stylesheet"
+        charset="utf-8">
+    <link rel="stylesheet" href="./assets/dq.css" type="text/css">
+    <link rel="stylesheet" href="./assets/menu.css" type="text/css">
+    <link rel="stylesheet" href="./assets/detail.css" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+    <script src="neon-js/browser.js"></script>
+    <script src="neon-js/app.js"></script>
+
+    <title></title>
 
 </head>
+
 <body cz-shortcut-listen="true">
     <div class="blackboard question">
         <p id="question-text"></p>
@@ -18,100 +24,114 @@
         <div id="answer-list" class="blackboard answer"></div>
     </div>
 
-<script type="text/javascript" src="http://webcyou.com/file/js/jquery-1.3.2.min.js"></script>
-<script>
-$(function() {
-    let params = getQueryString();
-    let questionId = params["question_id"];
-    // TODO: 質問IDを使って質問テキストを取得
-    let questionText = "Question1";
-    $('title').text(questionText + ' | question details');
-    $('#question-text').text(questionText);
+    <script type="text/javascript" src="http://webcyou.com/file/js/jquery-1.3.2.min.js"></script>
+    <script>
+        $(function () {
+            let params = getQueryString();
+            let questionId = params["question_id"];
+            // TODO: 質問IDを使って質問テキストを取得
+            let questionText = "Question1";
+            $('title').text(questionText + ' | question details');
+            $('#question-text').text(questionText);
 
-    // TODO: ここに回答データを突っ込む
-    let answerList = [
-        {
-            id: 1,
-            text: "Answer1",
-            likes: 4,
-            is_liked: true
-        },
-        {
-            id: 2,
-            text: "Answer2",
-            likes: 8,
-            is_liked: false
-        },
-    ];
-    for (var i = 0; i < answerList.length; i++) {
-        // 回答済みかどうかでアイコンが変化する
-        var heartHtml = '';
-        if (answerList[i].is_liked) {
-            heartHtml = '<i class="fas fa-heart"></i>';
-        } else {
-            heartHtml = '<i class="far fa-heart"></i>';
+
+            getReturn().then(function (val) {
+                let answerList = [
+                    {
+                        id: 1,
+                        text: "Answer1: Of Course NEO!!!!",
+                        likes: val,
+                        is_liked: true
+                    },
+                    {
+                        id: 2,
+                        text: "Answer2: I prefer Ether.",
+                        likes: 1,
+                        is_liked: false
+                    },
+                ];
+                for (var i = 0; i < answerList.length; i++) {
+                    // 回答済みかどうかでアイコンが変化する
+                    var heartHtml = '';
+                    if (answerList[i].is_liked) {
+                        heartHtml = '<i class="fas fa-heart"></i>';
+                    } else {
+                        heartHtml = '<i class="far fa-heart"></i>';
+                    }
+
+                    // 回答リストのHTMLを生成し追加
+                    let html = '<p class="blink-before-hover">'
+                        + answerList[i].text
+                        + '<span class="answer-heart clickable" onclick="doLike('
+                        + answerList[i].id
+                        + '); return false;">'
+                        + heartHtml
+                        + answerList[i].likes
+                        + '</span>'
+                        + '</p>';
+                    $('#answer-list').append(html);
+                }
+
+                var createAnswerHtml = '<p class="padding-top16px blink-before-hover">'
+                    + '<a href="battle.html?question_id='
+                    + questionId
+                    + '">'
+                    + 'fight this question!'
+                    + '</a></p>';
+                $('#answer-list').append(createAnswerHtml);
+
+                // heartマウスオーバー時の処理
+                $('.fa-heart').hover(
+                    function () {
+                        // mouseover
+                        toggleLikeIcon($(this));
+                    },
+                    function () {
+                        // mouseout
+                        toggleLikeIcon($(this));
+                    }
+                );
+            })
+
+            // TODO: ここに回答データを突っ込む
+
+        });
+
+        /**
+         * いいねボタンが押されたときの挙動
+         * @params _answerId int 回答ID
+         */
+        async function doLike(_answerId) {
+            // TODO: いいねカウントを増やす処理
+
+            await setReturn();
+
+            alert("Your Like is stored in blockchain!!");
+
+            var person = confirm("And you sent NEO?");
+            if (person == true) {
+                sendNeo();
+            }
         }
 
-        // 回答リストのHTMLを生成し追加
-        let html= '<p class="blink-before-hover">'
-            + answerList[i].text
-            + '<span class="answer-heart clickable" onclick="doLike('
-            + answerList[i].id
-            + '); return false;">'
-            + heartHtml
-            + answerList[i].likes
-            + '</span>'
-            + '</p>';
-        $('#answer-list').append(html);
-    }
-
-    var createAnswerHtml = '<p class="padding-top16px blink-before-hover">'
-        + '<a href="battle.html?question_id='
-        + questionId
-        + '">'
-        + 'fight this question!'
-        + '</a></p>';
-    $('#answer-list').append(createAnswerHtml);
-
-    // heartマウスオーバー時の処理
-    $('.fa-heart').hover(
-        function() {
-            // mouseover
-            toggleLikeIcon($(this));
-        },
-        function() {
-            // mouseout
-            toggleLikeIcon($(this));
+        /**
+         * いいねアイコンがマウスオーバーされたときの挙動
+         * @params _object jQueryObject fontawesomeアイコンのHTML(<i></i>)
+         */
+        function toggleLikeIcon(_object) {
+            if (_object.hasClass('fas')) {
+                _object.removeClass('fas');
+                _object.addClass('far');
+            } else {
+                _object.removeClass('far');
+                _object.addClass('fas');
+            }
         }
-    );
-});
 
-/**
- * いいねボタンが押されたときの挙動
- * @params _answerId int 回答ID
- */
-function doLike(_answerId) {
-    // TODO: いいねカウントを増やす処理
-    alert(_answerId);
-}
-
-/**
- * いいねアイコンがマウスオーバーされたときの挙動
- * @params _object jQueryObject fontawesomeアイコンのHTML(<i></i>)
- */
-function toggleLikeIcon(_object) {
-    if (_object.hasClass('fas')) {
-        _object.removeClass('fas');
-        _object.addClass('far');
-    } else {
-        _object.removeClass('far');
-        _object.addClass('fas');
-    }
-}
-
-</script>
-<script type="text/javascript" src="./assets/jquery-1.2.2.pack.js"></script>
-<script type="text/javascript" src="./assets/ajaxcodedisplay-or.js"></script>
-<script type="text/javascript" src="./assets/common.js"></script>
+    </script>
+    <script type="text/javascript" src="./assets/jquery-1.2.2.pack.js"></script>
+    <script type="text/javascript" src="./assets/ajaxcodedisplay-or.js"></script>
+    <script type="text/javascript" src="./assets/common.js"></script>
 </body>
+
 </html>

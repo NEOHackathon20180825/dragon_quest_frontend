@@ -45,7 +45,7 @@ function setReturn() {
 
 }
 
-function getReturn() {
+async function getReturn() {
 
     const contract = '2a0c0765696cbe723ec0f8a964c1b06a4d5ea179';
     const props = {
@@ -54,11 +54,14 @@ function getReturn() {
     }
     const script = Neon.default.create.script(props)
 
-    Neon.rpc.Query.invokeScript(script)
+    var value;
+    await Neon.rpc.Query.invokeScript(script)
         .execute('http://localhost:30333')
         .then(res => {
-            console.log(res);
+            value = res.result.stack[1].value;
             //console.log(Neon.u.hexstring2str(res.result.stack[1].value));
             //return Neon.u.hexstring2str(res.result.stack[1].value);
         })
+
+    return value;
 }

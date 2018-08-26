@@ -70,7 +70,7 @@ $(function() {
     let params = getQueryString();
     let questionId = params["question_id"];
     // TODO: 質問IDを使って質問テキストを取得
-    let questionText = "Question1";
+    let questionText = "Question1: Which is better, Ethereum or NEO?";
     $('#question-text').text(questionText);
     $('title').text(questionText + " | battle");
     setTimeout(function() {
@@ -195,35 +195,35 @@ $(function() {
         return false;
     });
 
-    /********* どうぐ *************/
+    /** どうぐ **/
     $(".item>a").click(function() {
-/*
-        $(".message>p").text("あなたはやくそうをつかいました。\nHPが23かいふくしました。");
-        pHp = pHp + 23;
-        $(".player01Li>.hp").text(pHp);
 
-        //キングスライムのこうげき
-        attckP();
+$(".message>p").text("You have to use the herbs.\nHP was welfare 23 times.");
+pHp = pHp + 23;
+$(".player01Li>.hp").text(pHp);
 
-        setTimeout(function() {
-            $(".monsterLi>li").addClass("attck");
-            $(".dqArea").addClass("shock");
-            $(".message>p").text("キングスライムのこうげき、"+mAttck+"のダメージ！");
-            pHp = pHp-mAttck;
-            dieCheck();
-            $(".player01Li>.hp").text(pHp);
+//キングスライムのこうげき
+attckP();
 
-            setTimeout(function() {
-                $(".monsterLi>li").removeClass("attck");
-                $(".dqArea").removeClass("shock");
-            }, 2000);
-        }, 2800);
+setTimeout(function() {
+    $(".monsterLi>li").addClass("attck");
+    $(".dqArea").addClass("shock");
+    $(".message>p").text("King Slime of attack"+mAttck+"damage！");
+    pHp = pHp-mAttck;
+    dieCheck();
+    $(".player01Li>.hp").text(pHp);
 
-        dieCheck();
-*/
+    setTimeout(function() {
+        $(".monsterLi>li").removeClass("attck");
+        $(".dqArea").removeClass("shock");
+    }, 2000);
+}, 2800);
 
-        return false;
-    });
+dieCheck();
+
+
+return false;
+});
 
     /********* ぼうぎょ *************/
     $(".guard>a").click(function() {
