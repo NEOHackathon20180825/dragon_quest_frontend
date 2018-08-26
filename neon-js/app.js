@@ -1,19 +1,3 @@
-function getTitle() {
-
-    const contract = '60dea68f62ef03df87ae7c1079a64a9d1aff031f';
-    const props = {
-        scriptHash: contract,
-    }
-    const script = Neon.default.create.script(props)
-
-    Neon.rpc.Query.invokeScript(script)
-        .execute('http://localhost:30333')
-        .then(res => {
-            console.log(Neon.u.hexstring2str(res.result.stack[1].value));
-            return Neon.u.hexstring2str(res.result.stack[1].value);
-        })
-}
-
 function sendNeo() {
     Neon.api.default.sendAsset({
         net: 'http://localhost:4000/api/main_net/',
