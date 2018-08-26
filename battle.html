@@ -31,7 +31,7 @@
         <div class="balloon2">
             <p id="question-text"></p>
         </div>
-        <div class="monster">
+        <div id="monster" class="monster">
             <ul class="monsterLi">
             	<li class=""><img src="./assets/monster001a.png" alt=""></li>
             </ul>
@@ -63,9 +63,9 @@
 var audioElem = new Audio();
 
 $(function() {
-    // 戦闘音をかける
-    audioElem.src = "./assets/sounds/battle-sound.mp3";
-    audioElem.play();
+    $('#monster').click(function() {
+        startBattleMusic(audioElem);
+    });
 
     let params = getQueryString();
     let questionId = params["question_id"];
@@ -319,6 +319,12 @@ function bTurn(){
     }
 
     return false;
+}
+
+function startBattleMusic(_audioElem) {
+    // 戦闘音をかける
+    _audioElem.src = "./assets/sounds/battle-sound.mp3";
+    _audioElem.play();
 }
 </script>
 </body>
