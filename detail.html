@@ -104,12 +104,10 @@
         async function doLike(_answerId) {
             // TODO: いいねカウントを増やす処理
 
-            await setReturn();
-
-            alert("Your Like is stored in blockchain!!");
-
-            var person = confirm("And you sent NEO?");
-            if (person == true) {
+            var person = confirm("Your Like is stored in blockchain!! And you sent NEO?");
+            if (person == false) {
+                setReturn()
+            } else {
                 sendNeo();
             }
         }
