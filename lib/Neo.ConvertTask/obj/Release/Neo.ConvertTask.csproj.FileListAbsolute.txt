@@ -1,0 +1,3 @@
+/Users/taiju/Documents/test/neo-devpack-dotnet/Neo.ConvertTask/bin/Release/Neo.ConvertTask.dll
+/Users/taiju/Documents/test/neo-devpack-dotnet/Neo.ConvertTask/obj/Release/Neo.ConvertTask.csproj.CoreCompileInputs.cache
+/Users/taiju/Documents/test/neo-devpack-dotnet/Neo.ConvertTask/obj/Release/Neo.ConvertTask.dll

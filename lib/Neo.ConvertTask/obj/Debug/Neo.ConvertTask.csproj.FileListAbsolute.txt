@@ -1,0 +1,6 @@
+/Users/taiju/Documents/test/neo-devpack-dotnet/Neo.ConvertTask/bin/Debug/Neo.ConvertTask.dll
+/Users/taiju/Documents/test/neo-devpack-dotnet/Neo.ConvertTask/bin/Debug/Neo.ConvertTask.pdb
+/Users/taiju/Documents/test/neo-devpack-dotnet/Neo.ConvertTask/obj/Debug/Neo.ConvertTask.csprojAssemblyReference.cache
+/Users/taiju/Documents/test/neo-devpack-dotnet/Neo.ConvertTask/obj/Debug/Neo.ConvertTask.csproj.CoreCompileInputs.cache
+/Users/taiju/Documents/test/neo-devpack-dotnet/Neo.ConvertTask/obj/Debug/Neo.ConvertTask.dll
+/Users/taiju/Documents/test/neo-devpack-dotnet/Neo.ConvertTask/obj/Debug/Neo.ConvertTask.pdb
