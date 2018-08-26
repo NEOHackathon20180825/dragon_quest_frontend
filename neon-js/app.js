@@ -29,13 +29,12 @@ function sendNeo() {
         });
 }
 
+function setReturn() {
 
-
-function set(method) {
+    const contract = '2a0c0765696cbe723ec0f8a964c1b06a4d5ea179';
     const props = {
         scriptHash: contract,
-        operation: method,
-        args: [],
+        operation: "set"
     }
 
     const script = Neon.default.create.script(props)
@@ -62,3 +61,20 @@ function set(method) {
 
 }
 
+function getReturn() {
+
+    const contract = '2a0c0765696cbe723ec0f8a964c1b06a4d5ea179';
+    const props = {
+        scriptHash: contract,
+        operation:  "get"
+    }
+    const script = Neon.default.create.script(props)
+
+    Neon.rpc.Query.invokeScript(script)
+        .execute('http://localhost:30333')
+        .then(res => {
+            console.log(res);
+            //console.log(Neon.u.hexstring2str(res.result.stack[1].value));
+            //return Neon.u.hexstring2str(res.result.stack[1].value);
+        })
+}
